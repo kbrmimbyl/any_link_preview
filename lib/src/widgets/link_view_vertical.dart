@@ -82,7 +82,7 @@ class LinkViewVertical extends StatelessWidget {
                     child: _img == null
                         ? Container(color: bgColor ?? Colors.grey)
                         : Container(
-                            height: 200,
+                            height: 150,
                             padding: EdgeInsets.only(bottom: 15),
                             decoration: BoxDecoration(
                               borderRadius: radius == 0
