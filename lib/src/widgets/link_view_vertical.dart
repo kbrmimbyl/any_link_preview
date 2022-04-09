@@ -50,7 +50,7 @@ class LinkViewVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {    
     var layoutWidth = MediaQuery.of(context).size.width;
-    var layoutHeight = 250;
+    var layoutHeight = 250.0;
 
     var _titleTS = titleTextStyle ??
         TextStyle(
