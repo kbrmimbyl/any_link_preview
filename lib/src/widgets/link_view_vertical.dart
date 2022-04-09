@@ -40,11 +40,11 @@ class LinkViewVertical extends StatelessWidget {
   }
 
   int computeTitleLines(layoutHeight, layoutWidth) {
-    return layoutHeight - layoutWidth < 50 ? 1 : 2;
+    return 2;
   }
 
   int? computeBodyLines(layoutHeight) {
-    return layoutHeight ~/ 60 == 0 ? 1 : layoutHeight ~/ 60;
+    return 3;
   }
 
   @override
