@@ -48,63 +48,63 @@ class LinkViewVertical extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      var layoutWidth = constraints.biggest.width;
-      var layoutHeight = constraints.biggest.height;
+  Widget build(BuildContext context) {    
+    var layoutWidth = constraints.biggest.width;
+    var layoutHeight = 250;
 
-      var _titleTS = titleTextStyle ??
-          TextStyle(
-            fontSize: computeTitleFontSize(layoutHeight),
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          );
-      var _bodyTS = bodyTextStyle ??
-          TextStyle(
-            fontSize: computeTitleFontSize(layoutHeight) - 1,
-            color: Colors.grey,
-            fontWeight: FontWeight.w400,
-          );
-
-      ImageProvider? _img = imageUri != '' ? NetworkImage(imageUri) : null;
-      if (imageUri.startsWith('data:image')) {
-        _img = MemoryImage(
-          base64Decode(imageUri.substring(imageUri.indexOf('base64') + 7)),
+    var _titleTS = titleTextStyle ??
+        TextStyle(
+          fontSize: computeTitleFontSize(layoutHeight),
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
         );
-      }
+    var _bodyTS = bodyTextStyle ??
+        TextStyle(
+          fontSize: computeTitleFontSize(layoutHeight) - 1,
+          color: Colors.grey,
+          fontWeight: FontWeight.w400,
+        );
 
-      return InkWell(
-          onTap: () => onTap(),
-          child: Column(
-            children: <Widget>[
-              showMultiMedia!
-                  ? Expanded(
-                      flex: 2,
-                      child: _img == null
-                          ? Container(color: bgColor ?? Colors.grey)
-                          : Container(
-                              padding: EdgeInsets.only(bottom: 15),
-                              decoration: BoxDecoration(
-                                borderRadius: radius == 0
-                                    ? BorderRadius.zero
-                                    : BorderRadius.only(
-                                        topLeft: Radius.circular(12),
-                                        topRight: Radius.circular(12),
-                                      ),
-                                image: DecorationImage(
-                                  image: _img,
-                                  fit: BoxFit.fitWidth,
-                                ),
+    ImageProvider? _img = imageUri != '' ? NetworkImage(imageUri) : null;
+    if (imageUri.startsWith('data:image')) {
+      _img = MemoryImage(
+        base64Decode(imageUri.substring(imageUri.indexOf('base64') + 7)),
+      );
+    }
+
+    return InkWell(
+        onTap: () => onTap(),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            showMultiMedia!
+                ? Container(
+                    child: _img == null
+                        ? Container(color: bgColor ?? Colors.grey)
+                        : Container(
+                            height: 200,
+                            padding: EdgeInsets.only(bottom: 15),
+                            decoration: BoxDecoration(
+                              borderRadius: radius == 0
+                                  ? BorderRadius.zero
+                                  : BorderRadius.only(
+                                      topLeft: Radius.circular(12),
+                                      topRight: Radius.circular(12),
+                                    ),
+                              image: DecorationImage(
+                                image: _img,
+                                fit: BoxFit.fitWidth,
                               ),
                             ),
-                    )
-                  : SizedBox(height: 5),
-              _buildTitleContainer(
-                  _titleTS, computeTitleLines(layoutHeight, layoutWidth)),
-              _buildBodyContainer(_bodyTS, computeBodyLines(layoutHeight)),
-            ],
-          ));
-    });
+                          ),
+                  )
+                : SizedBox(height: 5),
+            _buildTitleContainer(
+                _titleTS, computeTitleLines(layoutHeight, layoutWidth)),
+            _buildBodyContainer(_bodyTS, computeBodyLines(layoutHeight)),
+          ],
+        ));
+    
   }
 
   Widget _buildTitleContainer(TextStyle _titleTS, _maxLines) {
