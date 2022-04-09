@@ -72,7 +72,7 @@ class LinkViewVertical extends StatelessWidget {
       );
     }
 
-    return InkWell(
+    return GestureDetector(
         onTap: () => onTap(),
         child: Column(
           mainAxisSize: MainAxisSize.min,
