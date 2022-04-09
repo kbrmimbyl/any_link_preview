@@ -31,7 +31,7 @@ class LinkAnalyzer {
         _info = Metadata.fromJson(infoJson);
         var _isEmpty = _info.title == null || _info.title == 'null';
         if (_isEmpty || !_info.timeout.isAfter(DateTime.now())) {
-          async.unawaited(CacheManager.deleteKey(url));
+          CacheManager.deleteKey(url);
         }
         if (_isEmpty) _info = null;
       }
