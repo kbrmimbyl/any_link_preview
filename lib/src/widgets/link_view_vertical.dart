@@ -93,7 +93,7 @@ class LinkViewVertical extends StatelessWidget {
                                     ),
                               image: DecorationImage(
                                 image: _img,
-                                fit: BoxFit.fitWidth,
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
