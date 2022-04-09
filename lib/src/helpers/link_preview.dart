@@ -237,7 +237,7 @@ class _AnyLinkPreviewState extends State<AnyLinkPreview> {
             : widget.boxShadow ??
                 [BoxShadow(blurRadius: 3, color: Colors.grey)],
       ),
-      height: _height,
+      // height: _height,
       child: (widget.displayDirection == uiDirection.uiDirectionHorizontal)
           ? LinkViewHorizontal(
               key: widget.key ?? Key(widget.link.toString()),
